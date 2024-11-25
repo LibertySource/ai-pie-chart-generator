@@ -5,13 +5,16 @@
     </div>
     <div class="container mx-auto max-w-3xl p-6">
       <header class="bg-ice-blue p-6 rounded-lg mb-6">
-        <h1 class="text-2xl font-bold">AI Pie Chart Generator</h1>
+        <h1 class="text-2xl font-bold">AI Pie Chart Generator v.{{ appVersion }}</h1>
       </header>
 
       <div class="mb-6">
         <p>Supply a reasonable JSON string suitable for being displayed as a pie chart, and AI will be used to display
           the data using <a class="text-blue-500 underline" href="https://www.chartjs.org/docs/latest/api/"
-            target="_blank">Chart.js</a></p>
+            target="_blank">Chart.js</a>.
+          Visit the <a class="text-blue-500 underline" href="https://github.com/LibertySource/ai-pie-chart-generator"
+            target="_blank">GitHub Repo</a>.
+        </p>
       </div>
 
       <HiddenInput v-model="accessKey" label="Access Key" />
@@ -55,6 +58,7 @@ const selectedSample = ref<string>('');
 const loading = ref<boolean>(false);
 const pieChartCanvas = ref<HTMLCanvasElement | null>(null);
 const myChart = ref<Chart | null>(null);
+const appVersion = __APP_VERSION__
 
 const sampleJsons = [
   { "title": "Simple Pie Chart", "value": '{"data":[{"label":"A","value":30},{"label":"B","value":50},{"label":"C","value":20}]}' },
