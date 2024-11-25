@@ -63,9 +63,12 @@ const sampleJsons = [
 ]
 
 onMounted(() => {
-  accessKey.value = localStorage.getItem("accessKey") || '';
-  accessSecretKey.value = localStorage.getItem("accessSecretKey") || '';
-  promptId.value = localStorage.getItem("promptId") || '';
+  const queryString = window.location.search
+  const urlParams = new URLSearchParams(queryString)
+
+  accessKey.value = urlParams.get('accessKey') || localStorage.getItem("accessKey") || '';
+  accessSecretKey.value = urlParams.get('accessSecretKey') || localStorage.getItem("accessSecretKey") || '';
+  promptId.value = urlParams.get('promptId') || localStorage.getItem("promptId") || '';
   jsonInput.value = localStorage.getItem("jsonInput") || '';
 });
 
